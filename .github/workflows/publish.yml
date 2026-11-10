@@ -1,0 +1,32 @@
+name: Publish downloads
+# A branch named upload-<version> carries the setup file in parts, the APK and a VERSION file.
+# This job joins the parts, publishes them as the latest release, and removes the branch again.
+on:
+  push:
+    branches: ['upload-*']
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Join the setup file and check it
+        run: |
+          cat setup.part* > Taxonomics-Setup.exe
+          sha256sum -c SHA256SUMS
+          echo "VERSION=$(cat VERSION)" >> "$GITHUB_ENV"
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ env.VERSION }}
+          target_commitish: main
+          name: Taxonomics ${{ env.VERSION }}
+          body: |
+            Windows: Taxonomics-Setup.exe  |  Android: Taxonomics.apk
+            Use the same login on the website, the Windows app and the Android app.
+          make_latest: true
+          files: |
+            Taxonomics-Setup.exe
+            Taxonomics.apk
+      - name: Remove the upload branch
+        run: git push origin --delete "${GITHUB_REF_NAME}"
