@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "rulesVersion": 1,
+  "asOf": "2026-11-10",
+  "gstr1": {
+    "version": "GST3.2.4",
+    "b2clLimit": [
+      { "from": "2017-07-01", "paise": 25000000 },
+      { "from": "2024-08-01", "paise": 10000000 }
+    ],
+    "hsnSplitFrom": "2025-05",
+    "hsnDescMax": 30,
+    "omitEmptyHsnLists": true
+  },
+  "rates": {
+    "current": [0, 0.25, 3, 5, 18, 40],
+    "legacy": [0.1, 1, 1.5, 6, 7.5, 12, 28],
+    "portal": [0, 0.1, 0.25, 1, 1.5, 3, 5, 6, 7.5, 12, 18, 28, 40]
+  },
+  "hsnDigits": {
+    "allowed": [4, 6, 8],
+    "byTurnover": [
+      { "abovePaise": 0, "digits": 4 },
+      { "abovePaise": 5000000000, "digits": 6 }
+    ]
+  },
+  "gstr7": {
+    "billWiseFrom": "2025-09",
+    "keys": {
+      "tds": "tds",
+      "ctin": "ctin",
+      "inum": "inum",
+      "idt": "idt",
+      "val": "val",
+      "amt_ded": "amt_ded",
+      "iamt": "iamt",
+      "camt": "camt",
+      "samt": "samt"
+    },
+    "tdsLimitPaise": 25000000,
+    "tdsRatePct": 2
+  },
+  "ewb": {
+    "limitPaise": 5000000,
+    "version": "1.0.0621"
+  },
+  "einvoice": {
+    "version": "1.1",
+    "turnoverLimitPaise": 5000000000
+  },
+  "dueDates": {
+    "gstr1": 11,
+    "gstr1Quarterly": 13,
+    "iff": 13,
+    "gstr3b": 20,
+    "gstr3bQuarterlyGroupA": 22,
+    "gstr3bQuarterlyGroupB": 24,
+    "groupAStates": ["22", "23", "24", "26", "27", "29", "30", "31", "32", "33", "34", "35", "36", "37"],
+    "gstr7": 10,
+    "cmp08": 18
+  },
+  "notices": []
+}
