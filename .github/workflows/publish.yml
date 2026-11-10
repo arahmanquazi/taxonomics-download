@@ -28,5 +28,6 @@ jobs:
           files: |
             Taxonomics-Setup.exe
             Taxonomics.apk
+            SHA256SUMS
       - name: Remove the upload branch
         run: git push origin --delete "${GITHUB_REF_NAME}"
